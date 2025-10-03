@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>班級五子棋比賽</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>🏆 班級五子棋比賽</h1>
+    <p class="subtitle">日期：<span id="matchDate">2025/10/3</span> · 地點：教室後方</p>
+  </header>
+
+  <main class="layout">
+    <!-- 左側：賽事資訊 & 名單 -->
+    <aside class="panel">
+      <section>
+        <h2>📋 賽事資訊</h2>
+        <p id="infoText">請在這裡更新比賽規則與備註。</p>
+      </section>
+
+      <section>
+        <h2>👥 參賽名單</h2>
+        <form id="addPlayerForm">
+          <input id="playerName" placeholder="輸入選手名稱" required />
+          <button type="submit">加入</button>
+        </form>
+        <ul id="playersList"></ul>
+        <button id="genPairsBtn">產生本輪對戰（隨機）</button>
+      </section>
+    </aside>
+
+    <!-- 中間：五子棋版 -->
+    <section class="panel center">
+      <h2>棋盤（點擊下子）</h2>
+      <div id="status">輪到：<span id="currentPlayer">黑子</span></div>
+      <div id="boardContainer">
+        <div id="board" class="board-grid" aria-label="五子棋棋盤"></div>
+      </div>
+      <div class="controls">
+        <button id="restartBtn">重新開始</button>
+        <button id="resetPlayersBtn">清空名單</button>
+      </div>
+    </section>
+
+    <!-- 右側：對戰表 -->
+    <aside class="panel">
+      <h2>🔀 對戰表</h2>
+      <div id="pairsArea">
+        <table id="pairsTable">
+          <thead><tr><th>#</th><th>選手A</th><th>選手B</th><th>勝者</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="note">要讓大家看到變動：請用 GitHub 編輯提交（下方說明）</p>
+    </aside>
+  </main>
+
+  <footer>
+    <small>製作：班級比賽系統範例</small>
+  </footer>
+
+  <script src="gomoku.js"></script>
+</body>
+</html>
