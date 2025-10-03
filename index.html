@@ -2,18 +2,28 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <title>山酒吧五子棋大賽♟️</title>
+  <title>山酒吧五子棋大賽</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <h1>五子棋比賽</h1>
 
-  <div id="board"></div>
-  <div id="status">輪黑</div>
+  <h2>賽程表拉</h2>
+  <img src="schedule.png" alt="賽程表" style="max-width:90%;border:1px solid #333;">
 
-  <h2>新鮮賽程表</h2>
-  <img src="schedule.png" alt="賽程表" id="schedule">
+  <h3>刷房卡：</h3>
+  <input type="text" id="roomInput" placeholder="房號">
+  <button id="joinBtn">Check In</button>
 
-  <script src="script.js"></script>
+  <script>
+    document.getElementById('joinBtn').addEventListener('click', () => {
+      const room = document.getElementById('roomInput').value.trim();
+      if(room) {
+        window.location.href = `game.html?room=${room}`;
+      } else {
+        alert('刷房卡');
+      }
+    });
+  </script>
 </body>
 </html>
