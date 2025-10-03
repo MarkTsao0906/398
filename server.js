@@ -3,9 +3,9 @@ const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
-app.use(express.static(__dirname)); 
+app.use(express.static(__dirname));
 
-const rooms = {}; 
+const rooms = {};
 
 io.on('connection', socket => {
   socket.on('joinRoom', room => {
@@ -28,10 +28,6 @@ io.on('connection', socket => {
 
   socket.on('restart', room=>{
     io.to(room).emit('restartBoard');
-  });
-
-  socket.on('disconnect', ()=>{
-   
   });
 });
 
