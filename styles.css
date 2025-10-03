@@ -1,49 +1,44 @@
-:root { --panel-bg: #fff; --muted: #666; --accent: #0b77ff; }
-* { box-sizing: border-box; }
 body {
-  font-family: "Noto Sans TC", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  margin: 0; padding: 16px; background: #f3f6fb; color:#222;
-}
-header { text-align:center; margin-bottom:12px; }
-h1 { margin:0; font-size:1.6rem; }
-.subtitle { margin:4px 0 0; color:var(--muted); }
-
-.layout {
-  display: grid;
-  grid-template-columns: 240px 1fr 240px;
-  gap: 16px;
-  align-items: start;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: #fafafa;
 }
 
-.panel {
-  background: var(--panel-bg);
-  padding: 12px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(20,30,40,0.06);
+h1 {
+  margin-top: 20px;
 }
 
-.center { text-align: center; }
-
-.board-grid {
-  display: grid;
-  grid-template-columns: repeat(15, 32px);
-  grid-template-rows: repeat(15, 32px);
-  justify-content: center;
-  margin: 12px auto;
+#board {
+  position: relative;
+  width: 480px;
+  height: 480px;
+  margin: 20px auto;
   background: #f6e9bf;
   border: 2px solid #333;
-  position: relative;
 }
 
+/* 棋盤線條 */
+#board::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: 
+    repeating-linear-gradient(to right, black 1px, transparent 1px 32px),
+    repeating-linear-gradient(to bottom, black 1px, transparent 1px 32px);
+  pointer-events: none; /* 不擋點擊 */
+}
+
+/* 每個交點 */
 .cell {
   width: 32px;
   height: 32px;
-  background: transparent;
-  position: relative;
-  border: 1px solid #999; 
+  position: absolute;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
 }
-.cell:hover { transform: translateY(-1px); box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
 
+/* 棋子 */
 .stone {
   width: 20px;
   height: 20px;
@@ -51,29 +46,9 @@ h1 { margin:0; font-size:1.6rem; }
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); 
+  transform: translate(-50%, -50%);
 }
-.black .stone { background: #111; }
-.white .stone { background: #fff; border: 1px solid #ddd; }
 
-.win { outline: 2px solid gold !important; box-shadow: 0 0 8px gold; }
+.black { background: black; }
+.white { background: white; border: 1px solid #000; }
 
-/* controls */
-.controls { margin-top: 8px; display:flex; gap:8px; justify-content:center; }
-button { padding:6px 10px; border-radius:6px; border:0; cursor:pointer; background:var(--accent); color:#fff; }
-button.secondary { background:#888; }
-
-#status { margin-top:6px; color:var(--muted); }
-#playersList { list-style:none; padding:0; margin:8px 0; max-height:220px; overflow:auto; }
-#playersList li { padding:4px 6px; border-bottom:1px dashed #eee; display:flex; justify-content:space-between; align-items:center; }
-#playersList li button { background:transparent; color:#c00; border:0; cursor:pointer; }
-
-table { width:100%; border-collapse: collapse; font-size:0.95rem; }
-th,td { padding:6px 8px; border-bottom:1px solid #f0f0f0; text-align:left; }
-.note { color:var(--muted); font-size:0.85rem; margin-top:8px; }
-
-/* 響應式 */
-@media (max-width:900px) {
-  .layout { grid-template-columns: 1fr; }
-  .center { order: -1; }
-}
