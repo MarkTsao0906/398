@@ -1,0 +1,79 @@
+:root { --panel-bg: #fff; --muted: #666; --accent: #0b77ff; }
+* { box-sizing: border-box; }
+body {
+  font-family: "Noto Sans TC", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  margin: 0; padding: 16px; background: #f3f6fb; color:#222;
+}
+header { text-align:center; margin-bottom:12px; }
+h1 { margin:0; font-size:1.6rem; }
+.subtitle { margin:4px 0 0; color:var(--muted); }
+
+.layout {
+  display: grid;
+  grid-template-columns: 240px 1fr 240px;
+  gap: 16px;
+  align-items: start;
+}
+
+.panel {
+  background: var(--panel-bg);
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(20,30,40,0.06);
+}
+
+.center { text-align: center; }
+
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(15, 28px);
+  grid-template-rows: repeat(15, 28px);
+  gap: 2px;
+  justify-content: center;
+  margin: 12px auto;
+  background: #333;
+  padding: 6px;
+  border-radius: 6px;
+  width: max-content;
+}
+
+/* 每格 */
+.cell {
+  width:28px; height:28px;
+  background: #f6e9bf;
+  border-radius: 2px;
+  display:flex; align-items:center; justify-content:center;
+  cursor: pointer;
+  position: relative;
+}
+.cell:hover { transform: translateY(-1px); box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
+
+.stone {
+  width:22px; height:22px; border-radius:50%;
+  box-shadow: inset 0 -3px 6px rgba(0,0,0,0.15);
+  pointer-events: none;
+}
+.black .stone { background: #111; }
+.white .stone { background: #fff; border: 1px solid #ddd; }
+
+.win { outline: 2px solid gold !important; box-shadow: 0 0 8px gold; }
+
+/* controls */
+.controls { margin-top: 8px; display:flex; gap:8px; justify-content:center; }
+button { padding:6px 10px; border-radius:6px; border:0; cursor:pointer; background:var(--accent); color:#fff; }
+button.secondary { background:#888; }
+
+#status { margin-top:6px; color:var(--muted); }
+#playersList { list-style:none; padding:0; margin:8px 0; max-height:220px; overflow:auto; }
+#playersList li { padding:4px 6px; border-bottom:1px dashed #eee; display:flex; justify-content:space-between; align-items:center; }
+#playersList li button { background:transparent; color:#c00; border:0; cursor:pointer; }
+
+table { width:100%; border-collapse: collapse; font-size:0.95rem; }
+th,td { padding:6px 8px; border-bottom:1px solid #f0f0f0; text-align:left; }
+.note { color:var(--muted); font-size:0.85rem; margin-top:8px; }
+
+/* 響應式 */
+@media (max-width:900px) {
+  .layout { grid-template-columns: 1fr; }
+  .center { order: -1; }
+}
