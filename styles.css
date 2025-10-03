@@ -26,15 +26,13 @@ h1 { margin:0; font-size:1.6rem; }
 
 .board-grid {
   display: grid;
-  grid-template-columns: repeat(15, 28px);
-  grid-template-rows: repeat(15, 28px);
-  gap: 2px;
+  grid-template-columns: repeat(15, 32px);
+  grid-template-rows: repeat(15, 32px);
   justify-content: center;
   margin: 12px auto;
-  background: #333;
-  padding: 6px;
-  border-radius: 6px;
-  width: max-content;
+  background: #f6e9bf;
+  border: 2px solid #333;
+  position: relative;
 }
 
 .cell {
