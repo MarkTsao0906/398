@@ -1,5 +1,5 @@
 const board = document.getElementById('board');
-const size = 15; // 15x15 棋盤
+const size = 15;
 let currentPlayer = 'black';
 
 // 建立交點
@@ -16,13 +16,11 @@ for (let i = 0; i < size; i++) {
 }
 
 function placeStone(cell) {
-  if (cell.querySelector('.stone')) return; // 已經有棋子
+  if (cell.querySelector('.stone')) return;
 
   const stone = document.createElement('div');
   stone.classList.add('stone', currentPlayer);
   cell.appendChild(stone);
 
-  // 換手
   currentPlayer = currentPlayer === 'black' ? 'white' : 'black';
 }
-
