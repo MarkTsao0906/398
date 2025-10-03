@@ -5,7 +5,6 @@ let currentPlayer = 'black';
 let board = Array.from({length:size},()=>Array(size).fill(null));
 let gameOver = false;
 
-// 畫棋盤線
 for(let i=0;i<size;i++){
   const hLine = document.createElement('div');
   hLine.classList.add('line-horizontal');
@@ -18,7 +17,6 @@ for(let i=0;i<size;i++){
   boardEl.appendChild(vLine);
 }
 
-// 建立棋盤交點
 for (let i=0;i<size;i++){
   for (let j=0;j<size;j++){
     const cell = document.createElement('div');
@@ -33,13 +31,13 @@ for (let i=0;i<size;i++){
   }
 }
 
-// 下棋
+
 function placeStone(cell){
   if(gameOver) return;
   const x = parseInt(cell.dataset.x);
   const y = parseInt(cell.dataset.y);
 
-  if(board[y][x]) return; // 已有棋子
+  if(board[y][x]) return; 
 
   const stone = document.createElement('div');
   stone.classList.add('stone', currentPlayer);
@@ -57,7 +55,6 @@ function placeStone(cell){
   statusEl.textContent = `輪到: ${currentPlayer==='black'?'黑子':'白子'}`;
 }
 
-// 判五子連線
 function checkWin(x,y,color){
   const directions = [
     [1,0],[0,1],[1,1],[1,-1]
